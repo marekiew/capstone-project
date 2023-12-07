@@ -21,6 +21,21 @@ function ChatRoomSelector() {
             });
     }
 
+    function deleteChatRooms() {
+        fetch('/chats', { method: 'DELETE' })
+            .then(response => {
+                if (response.ok) {
+                    
+                    console.log('All chat rooms deleted successfully');
+                } else {
+                    
+                    console.error('Failed to delete chat rooms');
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+            });
+    }
 
     function createNewChat() {
         setChatRoomSelected(chats.length + 1);
@@ -34,13 +49,15 @@ function ChatRoomSelector() {
                     <button className="enter-chat" value={chatRoomNumber} onClick={event => setChatRoomSelected(chatRoomNumber)}>Enter chat
                         room
                     </button>
-
+                    
                     <br/>
+                    
                 </div>
 
             )}
            <button className="create-new-chat" onClick={createNewChat}>Create new chat </button>
-
+           <button className="delete" onClick={deleteChatRooms}>Delete All Chat Rooms</button>
+        
        </div>
 
     }
@@ -50,6 +67,7 @@ function ChatRoomSelector() {
         <>{chatRoomSelected === null ? showSelector() : <ChatWindow chatNumber={chatRoomSelected}></ChatWindow>}
 
         </>
+        
     );
 }
 
