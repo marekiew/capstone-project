@@ -12,7 +12,7 @@ function ChatWindow({chatNumber}) {
     }, []);
 
     function fetchAllMessages() {
-        fetch('/messages/' + chatNumber)
+        fetch('/api/messages/' + chatNumber)
             .then(response => {
                 response.json().then(messages => {
                     setMessage(messages);
@@ -36,7 +36,7 @@ function ChatWindow({chatNumber}) {
             body: JSON.stringify(currentMessage)
         };
 
-        fetch('/messages/' + chatNumber, requestOptions);
+        fetch('/api/messages/' + chatNumber, requestOptions);
     }
 
     return (

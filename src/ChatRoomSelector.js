@@ -13,7 +13,7 @@ function ChatRoomSelector() {
     }, []);
 
     function fetchAllChats() {
-        fetch('/chats')
+        fetch('/api/chats')
             .then(response => {
                 response.json().then(chats => {
                     setChats(chats);
@@ -22,7 +22,7 @@ function ChatRoomSelector() {
     }
 
     function deleteChatRooms() {
-        fetch('/chats', { method: 'DELETE' })
+        fetch('/api/chats', { method: 'DELETE' })
             .then(response => {
                 if (response.ok) {
                     
